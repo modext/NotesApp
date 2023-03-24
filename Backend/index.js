@@ -6,6 +6,11 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static('dist'))
 
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
 let notes = [
   {
     id: 1,
@@ -78,6 +83,7 @@ app.post('/api/notes', (request, response) => {
   response.json(note)
 })
 
+app.use(unknownEndpoint)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, ()=>{
