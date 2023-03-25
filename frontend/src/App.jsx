@@ -35,7 +35,7 @@ const App = () => {
 
   const notesToShow = showAll ? notes : notes.filter((note) => note.important);
 
-  const toggleImportanceOf = (id) => {
+  const toggleImportanceOf = id => {
     const note = notes.find((n) => n.id === id);
     const changedNote = { ...note, important: !note.important };
 
@@ -69,7 +69,7 @@ const App = () => {
         <Note 
             key={note.id}
             note={note}
-            toggleImportance={() => toggleImportanceOf(note.id)}
+            toggleImportanceOf={() => toggleImportanceOf(note.id)}
          />
         )}
       </ul>
